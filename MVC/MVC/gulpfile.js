@@ -83,6 +83,11 @@ function sampleReactApp() {
             }
             resolve()
         })
+    }).then(() => {
+        return src("wwwroot/js/scripts/samplereact.js", { base: "wwwroot/" })
+            .pipe(gzip())
+            .pipe(rename("samplereact.js.gz"))
+            .pipe(dest("wwwroot/js/scripts"));
     });
 }
 
